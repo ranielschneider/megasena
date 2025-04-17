@@ -25,10 +25,17 @@ class MainActivity : AppCompatActivity() {
         val btnGenerate: Button = findViewById(R.id.btn_generate)
 
         prefs = getSharedPreferences("db", Context.MODE_PRIVATE)
-        val result = prefs.getString("result", "null")
+        val result = prefs.getString("result", "Nenhum registro salvo")
+
+        /*
         if (result != null){
-            txtResult.text = "Última aposta: $result"
+            txtResult.text = "Última aposta: $result" -Trocando o if pelo let para aprimoramento do codigo.-
+        }*/
+
+        result?.let{
+            txtResult.text = "Última aposta: $it"
         }
+        txtResult.text = "Ultima aposta $result"
 
 
         btnGenerate.setOnClickListener {
